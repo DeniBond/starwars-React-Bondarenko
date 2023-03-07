@@ -18,22 +18,13 @@ section.left img
     z-index: -1;
 }
 
-img
-{
+img {
     box-shadow: rgba(60, 69, 67, 0.6) 10px 10px;
 }
 
 .right img
 {
     box-shadow: none;
-    width: 160px;
-    height: 150px;
-}
-
-span
-{
-    font-size: 1.3em;
-    color: black;
 }
 
 p{
