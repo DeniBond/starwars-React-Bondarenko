@@ -1,12 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {getRandomNumber as randNumber} from "../utils/Toolbox";
 
+class FarGalaxy extends Component {
 
-const FarGalaxy = (props) => {
-    return (
-        <p className="p-1">{props.textContent}</p>
-    );
-};
+    constructor(props) {
+        super(props);
+        this.state = {
+            mainText: ''
+        }
+    }
 
+    componentDidMount() {
+        fetch(`https://sw-info-api.herokuapp.com/v1/films/${randNumber(6)}`)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    mainText: data.opening_crawl
+                })
+            })
+    }
 
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return this.state.mainText !== nextState;
+    }
+
+    render() {
+        console.log('FarGalaxy rendered')
+        return (
+            <p className="p-1">{this.state.mainText}</p>
+        );
+    }
+}
 
 export default FarGalaxy;
