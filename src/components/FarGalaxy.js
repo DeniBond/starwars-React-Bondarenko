@@ -20,10 +20,6 @@ class FarGalaxy extends Component {
             })
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return this.state.mainText !== nextState;
-    }
-
     render() {
         console.log('FarGalaxy rendered')
         return (
