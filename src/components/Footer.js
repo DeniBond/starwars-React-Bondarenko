@@ -3,8 +3,8 @@ import style from './footer.module.css';
 
 const Footer = () => {
     return (
-        <footer className="rounded-bottom">
-            <div>
+        <footer className="fixed-bottom sticky-bottom st">
+            <div className={'st'}>
                 <p className="border border-light rounded-pill btn btn-danger button-send-me-an-email" >Send me an <span className={style.email}>email</span></p>
             </div>
         </footer>
