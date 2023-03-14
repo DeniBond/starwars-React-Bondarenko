@@ -4,6 +4,7 @@ import './App.css';
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import {AppContext} from "./utils/appContext";
 
 class App extends Component {
 
@@ -22,9 +23,14 @@ class App extends Component {
     render() {
         return (
             <div className={'container-fluid'}>
-                <Header changePage={this.changeActivePage}/>
-                <Main page={this.state.activePage}/>
-                <Footer/>
+                <AppContext.Provider value={{
+                    changePage: this.changeActivePage,
+                    activePage: this.state.activePage
+                }}>
+                    <Header/>
+                    <Main/>
+                    <Footer/>
+                </AppContext.Provider>
             </div>
         );
     }
