@@ -3,20 +3,29 @@ import Home from "./Home";
 import AboutMe from "./AboutMe";
 import Starwars from "./Starwars";
 import Contacts from "./Contacts";
-import {aboutMePage, contactPage, starWarsPage} from "../utils/constants";
-import {AppContext} from "../utils/appContext";
+import {aboutMePage,
+    contactPage,
+    homePage,
+    starWarsPage} from "../utils/constants";
+import {Route, Switch} from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
-const Main = (props) => {
+const Main = () => {
 
     return (
-        <AppContext.Consumer>
-            {value => {    switch (value.activePage) {
-                case aboutMePage : return (<AboutMe/>)
-                case starWarsPage : return (<Starwars/>)
-                case contactPage : return (<Contacts/>)
-                default: return (<Home/>)
-            }}}
-        </AppContext.Consumer>
+        <Switch>
+            {/*    Организовываем переключатель по маршрутам*/}
+            {/*    У route есть обязательные поля:
+        Path: Путь, который будет устанавливаться в браузерную строку, совмещая компонент
+        Exact: проверка пути с точностью до символа
+        */}
+            <Route path={[`/`, `/${homePage}`]} exact component={Home}/>
+            <Route path={`/${aboutMePage}/:hero`} exact component={AboutMe}/>
+            <Route path={`/${contactPage}`} exact component={Contacts}/>
+            <Route path={`/${starWarsPage}`} exact component={Starwars}/>
+            {/*default route errorPage*/}
+            <Route component={ErrorPage}/>
+        </Switch>
     )
 };
 

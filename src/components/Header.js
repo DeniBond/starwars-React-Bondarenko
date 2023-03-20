@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from "./Navigation";
 
-const Header = (props) => {
+const Header = () => {
     return (
         <header className="rounded-top">
             <Navigation/>
