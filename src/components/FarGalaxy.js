@@ -47,5 +47,5 @@ getItem(key)
 remove(key)
 clear()
 key(index)
-lenght
+length
  */

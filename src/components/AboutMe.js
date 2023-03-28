@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { friends, period } from "../utils/constants";
+import {characters, defaultHero, friends, period} from "../utils/constants";
 
 class AboutMe extends Component {
     constructor(props) {
@@ -9,6 +9,9 @@ class AboutMe extends Component {
 
     componentDidMount() {
         let key = this.props.match.params.hero;
+        if (!characters.includes(key)){
+            key = this.props.hero
+        }
         let hero = JSON.parse(localStorage.getItem(key));
         if (!hero || Date.now() - hero.time > period) {
             fetch(friends[key].url)
@@ -21,7 +24,10 @@ class AboutMe extends Component {
                     };
                     localStorage.setItem(key, JSON.stringify(hero));
                 });
-        } else this.setState({ hero: hero.heroInfo });
+        } else {
+            this.setState({ hero: hero.heroInfo });
+          this.props.changeHero(key)
+        }
     }
 
     render() {

@@ -84,3 +84,4 @@ export const starWarsPage = 'star_wars';
 export const contactPage = 'contact';
 
 export const period = 1000*60*24*10;
+export const defaultHero = characters[1]
